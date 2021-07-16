@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "jsforce": "^2.0.0-alpha.13"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.2"
+  }
+}
