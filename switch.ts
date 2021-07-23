@@ -21,6 +21,7 @@ const DEFINITION_DATA_FILE_PATH = './data/' + process.env.SF_USERNAME + '_define
 const TRIGGER_DEFINITION_DATA_FILE_PATH = './data/' + process.env.SF_USERNAME + '_trigger_define.json';
 const METADATA_PACKAGE_DIR = './data/package/';
 const METADATA_PACKAGE_TRIGGER_DIR = METADATA_PACKAGE_DIR + 'triggers/';
+const SANDBOX_FLAG = process.env.DOMAIN === 'login' ? '' : '--sandbox';
 
 (async () => {
   const conn = new jsforce.Connection({
@@ -58,7 +59,7 @@ const METADATA_PACKAGE_TRIGGER_DIR = METADATA_PACKAGE_DIR + 'triggers/';
 
 
   /* retrieve triggers metadata */
-  execSync(`./node_modules/jsforce-metadata-tools/bin/jsforce-retrieve -u ${process.env.SF_USERNAME} -p ${process.env.SF_PASSWORD} --memberTypes "ApexTrigger:*" --sandbox -D ${METADATA_PACKAGE_DIR}`);
+  execSync(`./node_modules/jsforce-metadata-tools/bin/jsforce-retrieve -u ${process.env.SF_USERNAME} -p ${process.env.SF_PASSWORD} --memberTypes "ApexTrigger:*" ${SANDBOX_FLAG} -D ${METADATA_PACKAGE_DIR}`);
 
   const dirents = fs.readdirSync(METADATA_PACKAGE_TRIGGER_DIR, {withFileTypes: true});
 
@@ -105,6 +106,6 @@ const METADATA_PACKAGE_TRIGGER_DIR = METADATA_PACKAGE_DIR + 'triggers/';
   }
 
   /* deploy triggers metadata */
-  execSync(`./node_modules/jsforce-metadata-tools/bin/jsforce-deploy -u ${process.env.SF_USERNAME} -p ${process.env.SF_PASSWORD} --sandbox -D ${METADATA_PACKAGE_DIR}`);
+  execSync(`./node_modules/jsforce-metadata-tools/bin/jsforce-deploy -u ${process.env.SF_USERNAME} -p ${process.env.SF_PASSWORD} ${SANDBOX_FLAG} -D ${METADATA_PACKAGE_DIR}`);
 
 })();
