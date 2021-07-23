@@ -9,7 +9,7 @@ A script that disables the Salesforce process, ApexTrigger in bulk, and restores
 $ git clone https://github.com/shinchit/sf-switch.git
 $ cd sf-switch/
 $ cat > .env
-DOMAIN=<login or test。Specify `login` for production organization>
+DOMAIN=<login or test. Specify `login` for production organization>
 SF_USERNAME=<`Login ID of the SF` organization to be operated>
 SF_PASSWORD=<`Password of the SF` organization to be operated>
 $ npm i
