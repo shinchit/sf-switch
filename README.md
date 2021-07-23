@@ -19,9 +19,9 @@ $ npm i
 
 `$ npx tsc`
 
-- disable processes and ApexTriggers at once
+- disable processes and ApexTriggers at once  
 `$ node switch.js --mode off`
-- restore processes and ApexTriggers at once
+- restore processes and ApexTriggers at once  
 `$ node switch.js --mode return`
 
 ## Note
